@@ -39,29 +39,16 @@
             Console.WriteLine();
 
             bool isExitRequested = false;
-            while(!isExitRequested)
+            var menu = new Menu("Menu:");
+            menu.AddMenuItem('0', "Exit", () => isExitRequested = true);
+            menu.AddMenuItem('1', "Add new quiz", AddNewQuiz);
+            menu.AddMenuItem('2', "Play quiz", PlayAQuiz);
+
+            while (!isExitRequested)
             {
-                Console.WriteLine("Menu:");
-                Console.WriteLine("0 - Exit");
-                Console.WriteLine("1 - Add new quiz");
-                Console.WriteLine("2 - Play a quiz");
-                Console.WriteLine();
-                Console.Write("Please pick an option: ");
-                char c = Console.ReadKey().KeyChar;
-                Console.WriteLine();
-                Console.WriteLine();
-                switch (c)
-                {
-                    case '0':
-                        isExitRequested = true;
-                        break;
-                    case '1':
-                        AddNewQuiz();
-                        break;
-                    case '2':
-                        PlayAQuiz();
-                        break;
-                }
+                menu.Display();
+                char c = Menu.PromptAndReadChoice("Please pick an option: ");
+                menu.InvokeMenuItem(c);
             }
         }
 
