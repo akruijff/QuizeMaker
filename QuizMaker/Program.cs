@@ -41,7 +41,7 @@
             bool isExitRequested = false;
             var menu = new Menu("Menu:");
             menu.AddMenuItem('0', "Exit", () => isExitRequested = true);
-            menu.AddMenuItem('1', "Add new quiz", AddNewQuiz);
+            menu.AddMenuItem('1', "New quiz", NewQuiz);
             menu.AddMenuItem('2', "Play quiz", PlayAQuiz);
 
             while (!isExitRequested)
@@ -52,7 +52,7 @@
             }
         }
 
-        static void AddNewQuiz()
+        static void NewQuiz()
         {
             var quiz = new Quiz();
             while (true)
