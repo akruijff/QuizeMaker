@@ -1,6 +1,4 @@
-﻿using System.Xml.Serialization;
-
-namespace QuizMaker
+﻿namespace QuizMaker
 {
     internal class Program
     {
@@ -88,11 +86,7 @@ namespace QuizMaker
                 quiz.Add(question);
             }
             if (quiz.Questions.Count > 0)
-            {
-                using FileStream file = File.Create("quiz.xml");
-                XmlSerializer serializer = new XmlSerializer(quiz.GetType());
-                serializer.Serialize(file, quiz);
-            }
+                Persistence.SaveQuiz(quiz);
         }
 
         private static Question? ReadQuestion()
