@@ -1,9 +1,12 @@
 ﻿namespace QuizMaker
 {
-    public class Question(string text)
+    public class Question
     {
-        public string Text { get; } = text;
-        private HashSet<Answer> _answers = [];
+        public string Text { get; set; } = "";
+        public readonly List<Answer> _answers = [];
+
+        public Question() { }
+        public Question(string s) { Text = s; }
 
         public override bool Equals(object? obj) => obj is Question other ? Text == other.Text : false;
         public override int GetHashCode() => Text?.GetHashCode() ?? 0;

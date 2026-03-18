@@ -2,7 +2,9 @@
 {
     public class Quiz
     {
-        public HashSet<Question> Questions { get; private set; } = [];
+        public Quiz() {}
+
+        public List<Question> Questions { get; set; } = [];
 
         public void Add(Question question) => Questions.Add(question);
     }
