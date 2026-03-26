@@ -162,7 +162,8 @@
 
             List<int> choices = new();
             foreach (char c in s)
-                choices.Add(c - '1');
+                if (int.TryParse(c.ToString(), out int result))
+                    choices.Add(c);
             return choices;
         }
 
