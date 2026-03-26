@@ -121,9 +121,9 @@
             DisplayQuestion(question, questionNumer, totalNumberQuestions);
             DisplayOptions(answers);
             List<int> choices = ReadOptions();
-            bool allIncorrect = IsAllCorrect(answers);
+            bool allCorrect = IsAllCorrect(answers);
             double score = CalcuateScore(answers, choices);
-            ProcessPlayerChoice(answers, choices, allIncorrect);
+            ProcessPlayerChoice(answers, choices, !allCorrect);
             return score;
         }
 
@@ -144,11 +144,11 @@
 
         private static bool IsAllCorrect(List<Answer> answers)
         {
-            bool allIncorrect = true;
+            bool allCorrect = false;
             foreach (Answer a in answers)
                 if (a.IsAnswerCorrect)
-                    allIncorrect = false;
-            return allIncorrect;
+                    allCorrect = true;
+            return allCorrect;
         }
 
         private static List<int> ReadOptions()
