@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        private static string FILE = "quiz.xml";
+        private static readonly string FILE = "quiz.xml";
 
         /*
          * What program has multiple choices, random questions and user scoring? A quiz maker program! Design a 
@@ -104,21 +104,9 @@
             double score = 0;
             IEnumerable<Question> questions = quiz.Questions.Shuffle();
             foreach (Question q in questions)
-                score += PlayQuestion(q, ++i, questions.Count());
+                score += new QuestionUI(q, ++i, questions.Count()).Play();
 
             UI.DisplayScore(score);
-        }
-
-        private static double PlayQuestion(Question question, int questionNumer, int totalNumberQuestions)
-        {
-            List<Answer> answers = question.Answers;
-            UI.DisplayQuestion(question, questionNumer, totalNumberQuestions);
-            UI.DisplayOptions(answers);
-            List<int> choices = UI.ReadOptions();
-            bool allCorrect = Logics.IsAllCorrect(answers);
-            double score = Logics.CalcuateScore(answers, choices);
-            UI.ProcessPlayerChoice(answers, choices, !allCorrect);
-            return score;
         }
     }
 }
