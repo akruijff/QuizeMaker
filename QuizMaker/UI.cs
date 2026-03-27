@@ -2,19 +2,6 @@
 {
     public class UI
     {
-        public static void ShowQuizRequred() => Console.WriteLine("There is no quiz stored. Please enter a quiz first.");
-
-        public static void DisplayScore(double score)
-        {
-            Console.WriteLine("FIN");
-            Console.WriteLine($"You're score is: {score}");
-            Console.WriteLine();
-
-            Console.WriteLine("Press any key to continue to the menu");
-            Console.ReadKey(true);
-            Console.WriteLine();
-        }
-
         public static Question? ReadQuestion()
         {
             string? s = Console.ReadLine();

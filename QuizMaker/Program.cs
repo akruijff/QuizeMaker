@@ -94,19 +94,7 @@
         static void PlayQuiz()
         {
             Quiz? quiz = Persistence.ReadQuiz(FILE);
-            if (quiz is null)
-            {
-                UI.ShowQuizRequred();
-                return;
-            }
-
-            int i = 0;
-            double score = 0;
-            IEnumerable<Question> questions = quiz.Questions.Shuffle();
-            foreach (Question q in questions)
-                score += new QuestionUI(q, ++i, questions.Count()).Play();
-
-            UI.DisplayScore(score);
+            QuizUI.Play(quiz);
         }
     }
 }
