@@ -19,7 +19,7 @@
         public Question() { }
         public Question(string s) { Text = s; }
 
-        public override bool Equals(object? obj) => obj is Question other ? Text == other.Text : false;
+        public override bool Equals(object? obj) => obj is Question other && Text == other.Text;
         public override int GetHashCode() => Text?.GetHashCode() ?? 0;
         public void Add(Answer anwser) => Answers.Add(anwser);
 
